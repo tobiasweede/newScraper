@@ -1,7 +1,7 @@
 # newScraper
 
 A simple website crawler for 
-** dn.se 
+..* dn.se 
 in python (scrapy)
 
 ## Usage
