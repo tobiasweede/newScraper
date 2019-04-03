@@ -1,0 +1,23 @@
+# -*- coding: utf-8 -*-
+import scrapy
+
+
+class DnSpider(scrapy.Spider):
+    name = 'dn'
+    allowed_domains = ['dn.se']
+    start_urls = ['https://www.dn.se']
+
+    def parse(self, response):
+        for news in response.xpath('//a[starts-with(@class,"news-list")]'):
+            link = news.re_first(r'href="(.*?)"')
+            if link is not None:
+                link = response.urljoin(link)
+            yield {
+                'link': link,
+                'timestamp': news.xpath('./time[@datetime]').re_first(r'\d{4}-\d{2}-\d{2}\w\d{2}:\d{2}:\d{2}'),
+                'header': news.xpath('./h2/text()').get().strip(),
+                'content': scrapy.Request(link, self.parse_content)
+            }
+
+    def parse_content(self, response):
+        return response.xpath('//div[@article__body]').get()
