@@ -12,6 +12,9 @@ scrapy crawl dn -o dn.jl # to crawl DN website
 ```
 
 ## TODO
+- fix duplicates
+
+## Future ideas
 - use a proper database
 - use a daemon
 
