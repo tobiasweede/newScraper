@@ -8,7 +8,7 @@
 import scrapy
 
 
-class NewscrawlerItem(scrapy.Item):
+class newScraperItem(scrapy.Item):
     link = scrapy.Field()
     date = scrapy.Field()
     header = scrapy.Field()

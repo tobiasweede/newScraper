@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
-from newsCrawler.items import NewscrawlerItem
+from newScraper.items import newScraperItem
 from bs4 import BeautifulSoup
 
 
@@ -15,7 +15,7 @@ class DnSpider(scrapy.Spider):
 
     def scrape(self, response):
         for news in response.xpath('//a[starts-with(@class,"news-list")]'):
-            item = NewscrawlerItem()
+            item = newScraperItem()
             item['link'] = news.re_first(r'href="(.*?)"')
             item['date'] = news.xpath('./time[@datetime]')\
                 .re_first(r'\d{4}-\d{2}-\d{2}\w\d{2}:\d{2}:\d{2}')
