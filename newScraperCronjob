@@ -1,3 +1,4 @@
 # DN scraper 
-*/5 * * * * root /home/homaar/newScraper/newScaperStart.sh >/dev/null 2>&1 
+### UNTESTED ###
+/home/homaar/newScraper/newScaperStart.sh >/dev/null 2>&1 
 
